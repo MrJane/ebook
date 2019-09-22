@@ -1,8 +1,8 @@
 <template>
     <div class="ebook" @click="test">
-        <ebook-title v-show="isTitleAndMenuShow"></ebook-title>
-        <ebook-reader></ebook-reader>
-        <ebook-menu v-show="isTitleAndMenuShow"></ebook-menu>
+        <ebook-title></ebook-title>
+        <router-view></router-view>
+        <ebook-menu></ebook-menu>
     </div>
 </template>
 

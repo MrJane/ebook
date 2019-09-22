@@ -1,17 +1,16 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import book from './book/book';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import book from './book/book'
+import search from './search/index'
 import getters from './getters'
-Vue.use(Vuex)
+import actions from './actions'
+
+Vue.use(Vuex);
+
 export default new Vuex.Store({
-  modules:{
-    book
+  modules: {
+    book,search
   },
   getters,
-  mutations:{
-
-  },
-  actions:{
-
-  }
+  actions
 })

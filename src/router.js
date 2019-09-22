@@ -1,13 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Ebook from './views/ebook/index'
-import EbookReader from './components/ebook/EbookReader'
+import EbookReader from './components/ebook/EbookReader';
+import EbookStore from './views/store/index';
+import StoreHome from './views/store/StoreHome'
 Vue.use(Router);
 export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'ebook'
+      redirect: 'store'
     },
     {
       path: '/ebook',
@@ -18,6 +20,14 @@ export default new Router({
           component: EbookReader
         },
       ]
-    }
+    },
+    {
+      path: '/search',
+      component:EbookStore,
+      redirect:'/search/home',
+      children: [
+        {
+        path:'home',component:StoreHome}]
+    },
   ]
 })
