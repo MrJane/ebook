@@ -22,12 +22,12 @@ export default new Router({
       ]
     },
     {
-      path: '/search',
+      path: '/store',
       component:EbookStore,
-      redirect:'/search/home',
+      redirect:'/store/search',
       children: [
         {
-        path:'home',component:StoreHome}]
+        path:'search',component:StoreHome}]
     },
   ]
 })
