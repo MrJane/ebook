@@ -3,7 +3,9 @@ import Router from 'vue-router';
 import Ebook from './views/ebook/index'
 import EbookReader from './components/ebook/EbookReader';
 import EbookStore from './views/store/index';
-import StoreHome from './views/store/StoreHome'
+import StoreHome from './views/store/StoreHome';
+import List from  './views/list/list';
+import Detail from './views/detail/detail'
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -29,5 +31,7 @@ export default new Router({
         {
         path:'search',component:StoreHome}]
     },
+    {path:'/list',component:List},
+    {path:'/detail',component:Detail}
   ]
 })
