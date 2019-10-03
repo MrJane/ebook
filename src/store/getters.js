@@ -23,7 +23,7 @@ const getters = {
   flapCardVisiable:state=>state.search.flapCardVisiable,
   isEditMode:state=>state.shelf.isEditMode,
   shelfList:state=>state.shelf.shelfList,
-  shelSelected:state=>state.shelf.shelSelected,
+  shelfSelected:state=>state.shelf.shelfSelected,
   showShelfTitle:state=>state.shelf.showShelfTitle,
 };
 

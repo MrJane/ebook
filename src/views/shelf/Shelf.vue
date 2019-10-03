@@ -1,7 +1,7 @@
 <template>
     <div class="shelf">
         <shelf-title ref="shelfTitle" class="title-wrapper"></shelf-title>
-        <scroll class="shel-scroll-wrapper" @onScroll="onscroll">
+        <scroll :bottom="48" class="shel-scroll-wrapper" @onScroll="onscroll">
             <ShelfSearch ref="list"></ShelfSearch>
             <!--            <shelf-list></shelf-list>-->
             <!--            <shelfList class="shelf-list-wrapper"></shelfList>-->
@@ -12,8 +12,14 @@
                     </div>
                     <div class="shelf-title title-small">{{data.title}}</div>
                 </div>
+<!--                <div class="shelf-list-item">-->
+<!--                    <div class="container">-->
+<!--                        <ShelfAdd></ShelfAdd>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </scroll>
+        <ShelfFooter v-show="isEditMode"></ShelfFooter>
     </div>
 </template>
 
@@ -23,22 +29,30 @@
     import ShelfSearch from "../../components/shelf/shelfSearch";
     import ShelfList from "../../components/shelf/ShelfList";
     import ShelfItem from "../../components/shelf/ShelfItem";
+    import ShelfAdd from "../../components/shelf/ShelfAdd";
+    import ShelfFooter from "../../components/shelf/ShelfFooter";
     import {shelf} from '../../api/book';
-    import shelfList from "./shelfList";
+    import {addToShelf} from '../../utils/store'
+    // import shelfList from "./shelfList";
+    import {mapGetters} from 'vuex'
+
 
     export default {
         name: "Shelf",
         data() {
-            return {
-                shelfList
-            }
+            return {}
+        },
+        computed: {
+            ...mapGetters(['shelfList','isEditMode'])
         },
         components: {
             ShelfSearch,
             Scroll,
             ShelfTitle,
             ShelfList,
-            ShelfItem
+            ShelfItem,
+            ShelfAdd,
+            ShelfFooter
         },
         methods: {
             onscroll(offsetY) {
@@ -50,10 +64,20 @@
                     this.$refs.shelfTitle.hideShadow();
                     this.$refs.list.hideShadow();
                 }
+            },
+            getShelfList() {
+                shelf().then((res) => {
+                    if (res.status === 200 && res.data) {
+                        // console.log(res.data.bookList,'oooooo');
+                        // console.log(addToShelf(res.data.bookList))
+                        this.$store.commit('SET_SHELF_LIST', addToShelf(this.shelfList))
+                    }
+                })
             }
         },
         mounted() {
-            shelf()
+            // console.log(this.shelfList);
+            this.getShelfList()
         }
     }
 </script>

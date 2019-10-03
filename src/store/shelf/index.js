@@ -1,8 +1,9 @@
+import _shelfList from "../../views/shelf/shelfList";
 const shelf = {
     state: {
         isEditMode: false, //是否编辑模式
-        shelfList: [], //书架图书列表
-        shelSelected:[],//已选中的图书
+        shelfList: _shelfList, //书架图书列表
+        shelfSelected:[],//已选中的图书
         showShelfTitle:true,//是否显示标题
     },
     mutations: {
@@ -13,7 +14,7 @@ const shelf = {
             state.shelfList = list
         },
         'SET_SHELF_SELECTED': (state, selected) => {
-            state.shelSelected = selected
+            state.shelfSelected = selected
         },
         'SET_SHELF_TITLE_SHOW': (state, visible) => {
             state.showShelfTitle = visible

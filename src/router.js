@@ -35,10 +35,11 @@ export default new Router({
                 },
                 {
                     path: 'shelf', component: Shelf
-                }
+                },
+                {path: 'detail', component: Detail}
             ]
         },
         {path: '/list', component: List},
-        {path: '/detail', component: Detail}
+
     ]
 })
