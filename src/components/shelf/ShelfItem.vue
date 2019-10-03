@@ -40,7 +40,6 @@
         },
         methods: {
             onItemClick() {
-                console.log(this.shelfSelected,'点击事件');
                 if (this.isEditMode) {
                     //编辑模式
                     this.dataSource.selected = !this.dataSource.selected;

@@ -27,11 +27,14 @@
             }
         },
         computed: {
-            ...mapGetters(['isEditMode', 'shelfList', 'shelSelected', 'showShelfTitle'])
+            ...mapGetters(['isEditMode', 'shelfList', 'shelfSelected', 'showShelfTitle'])
         },
         methods: {
             onEditClick() {
-                console.log('ddd')
+                if (!this.isEditMode) {
+                    this.$store.commit('SET_SHELF_SELECTED',[]);
+                    this.shelfList.forEach(item=>item.selected=false);
+                }
                 this.$store.commit('SET_IS_EDIT_MODE', !this.isEditMode)
             },
             clearCache() {
@@ -60,9 +63,11 @@
         height: px2rem(42);
         background: #ffffff;
         box-shadow: 0 px2rem(2) px2rem(2) 0 rgba(0, 0, 0, .1);
-        &.hide-shadow{
+
+        &.hide-shadow {
             box-shadow: none;
         }
+
         .title-text-wrapper {
             position: absolute;
             top: 0;
