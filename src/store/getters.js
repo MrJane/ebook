@@ -21,6 +21,10 @@ const getters = {
   speakingIconBottom: state => state.book.speakingIconBottom,
   hotOffsetY:state=>state.search.hotOffsetY,
   flapCardVisiable:state=>state.search.flapCardVisiable,
+  isEditMode:state=>state.shelf.isEditMode,
+  shelfList:state=>state.shelf.shelfList,
+  shelSelected:state=>state.shelf.shelSelected,
+  showShelfTitle:state=>state.shelf.showShelfTitle,
 };
 
 export default getters;

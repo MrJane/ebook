@@ -104,8 +104,13 @@
         } else {
           this.hideShadow();
         }
-        this.showTitle();
-        this.hotSearchVisiable = false;
+        if (this.hotSearchVisiable){
+            this.showTitle();
+            this.hotSearchVisiable = false;
+        }else {
+            this.$router.push('/store/shelf')
+        }
+
       }
     },
     watch: {
